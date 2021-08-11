@@ -51,6 +51,18 @@
    strings.Join(os.Args[1:], " ")
    ```
    
+   字符串分割
+   ```go
+   index, text := strings.Split(STR, "\n")
+   ```   
+
+   if !strings.HasPrefix(STR, PREFIX)。字符前缀判断
+
+   组合字符串
+   ```go
+   fmt.Sprintf("%s%d", aStr, aInt)//返回字符串。将不同类型的数据组合成字符串
+   ```
+
 7. if。if也不需要括号,且和左大括号必须同行
    ```go
    if n > 1{
@@ -85,3 +97,39 @@
    ```
 
 13. map对象被作为参数传递给一个函数时，使用的是引用，指向同一个内存地址。所以在外面改，也会影响原map对象
+14. ioutil.ReadFile读取文件的内容，返回值data,err
+15. ioutil.ReadAll(resp.Body)从http请求体中读取内容, 返回data,err
+
+16. import 与使用。 import image/color,使用时直接color.White
+17. http.Get(url)从web中读取内容，返回resp,err
+18. 常量和变量声明一般在包级别。这样整个包都可以使用这个变量；常量值可以是数字，字符串，bool值
+19. 复合声明。实例化go中复合类型
+   ```go
+   var palette = []color.Color{color.White, color.Black}//生成一个slice切片
+   ```
+
+   ```go
+   anim := gif.GIF{LoopCount: nframes} 
+   //生成一个struct结构体;gif.GIF是一个struct类型，时一组数据集合
+   // anim的LoopCount字段将设置为nframes，
+   //其他为默认值;struct内部变量可通过点来访问，如anim.Delay
+   ```
+
+20. go FUNC表示创建一个新的goroutine,并在这个新的goroutine中执行这个函数
+21. channel类型，是go中的一个核心类型。类似python中的collections.deque
+    * 操作符是<-。
+       ```go
+      ch <- v // 发送值v到channel ch中
+      v := <- ch // 从channel ch中接收数据，并将数据赋值给v
+       ```
+      
+    * 创建channel
+      ```go
+      ch := make(chan int, 100) // 可接收和发送类型为int的数据,容量是100
+      ch := make(chan <- float64) // 只可以用来发送float64类型的数据到ch
+      ch := make(<- chan int) //只可以用来给其他参数接收int类型的数据
+      ```
+
+22. time.Since(time.Now()).Seconds()获取时间差。t1-t0
+23. 定义锁。var mu sync.Mutex;mu.Lock();mu.Unlock()
+24. fmt.Fprintf(w io.writer, A_string) 将string写入w中去。这里w是一个io.Writer实例
