@@ -133,3 +133,37 @@ anim := gif.GIF{LoopCount: nframes}
 22. time.Since(time.Now()).Seconds()获取时间差。t1-t0
 23. 定义锁。var mu sync.Mutex;mu.Lock();mu.Unlock()
 24. fmt.Fprintf(w io.writer, A_string) 将string写入w中去。这里w是一个io.Writer实例
+25. 函数也定义返回类型，如果函数有返回值，则需要在声明时就有返回类型
+    ```go
+    func SigSum(x int) int{ //Sigsum的参数是int类型，返回值是int类型
+        //
+        return 1
+    }
+    ```
+    
+26. switch。
+    - 无符号switch,switch后直接跟大括号。和switch true是等价的
+        ```go
+        switch {
+        case x > 0:
+            return 1
+        default:
+            return 0
+        }
+        ```
+    
+    - 有符号switch, switch后面可以跟给一个简短的变量声明，一个自增表达式，赋值语句或者一个函数调用
+
+27. break,continue和其他语言的一样
+28. 指针。直接存储了变量内存地址的数据类型。
+    - 指针是可见的内存地址
+    - & 操作符可返回一个变量的内存地址
+    - 操作符可以获取指针指向的变量内容
+    - 没有指针运算
+
+29. 方法和接口。
+    - 方法是和命名类型关联的一类函数
+    - 接口时一种抽象类型
+
+30. 包
+31. 多行注释。/* */包含的为多行注释
